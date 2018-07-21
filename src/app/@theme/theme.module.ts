@@ -1,8 +1,7 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import {ModuleWithProviders, NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {
   NbActionsModule,
   NbCardModule,
@@ -16,31 +15,26 @@ import {
   NbUserModule,
   NbCheckboxModule,
   NbPopoverModule,
-  NbContextMenuModule,
-} from '@nebular/theme';
-
-import { NbSecurityModule } from '@nebular/security';
-
+  NbContextMenuModule
+} from "@nebular/theme";
+import {NbSecurityModule} from "@nebular/security";
 import {
   FooterComponent,
   HeaderComponent,
-  SearchInputComponent,
   ThemeSettingsComponent,
   SwitcherComponent,
   LayoutDirectionSwitcherComponent,
   ThemeSwitcherComponent,
-  ThemeSwitcherListComponent,
-} from './components';
-import { CapitalizePipe, PluralPipe, RoundPipe, TimingPipe } from './pipes';
+  ThemeSwitcherListComponent
+} from "./components";
+import {CapitalizePipe, PluralPipe, RoundPipe, TimingPipe} from "./pipes";
 import {
   OneColumnLayoutComponent,
   SampleLayoutComponent,
   ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
-} from './layouts';
-import { DEFAULT_THEME } from './styles/theme.default';
-import { COSMIC_THEME } from './styles/theme.cosmic';
-import { CORPORATE_THEME } from './styles/theme.corporate';
+  TwoColumnsLayoutComponent
+} from "./layouts";
+import {DEFAULT_THEME} from "./styles/theme.default";
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
 
@@ -68,7 +62,6 @@ const COMPONENTS = [
   ThemeSwitcherListComponent,
   HeaderComponent,
   FooterComponent,
-  SearchInputComponent,
   ThemeSettingsComponent,
   OneColumnLayoutComponent,
   SampleLayoutComponent,
@@ -90,9 +83,9 @@ const PIPES = [
 const NB_THEME_PROVIDERS = [
   ...NbThemeModule.forRoot(
     {
-      name: 'cosmic',
+      name: 'default',
     },
-    [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME ],
+    [ DEFAULT_THEME],
   ).providers,
   ...NbSidebarModule.forRoot().providers,
   ...NbMenuModule.forRoot().providers,

@@ -1,43 +1,45 @@
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
-import {
-  NbAuthComponent,
-  NbLoginComponent,
-  NbLogoutComponent,
-  NbRegisterComponent,
-  NbRequestPasswordComponent,
-  NbResetPasswordComponent,
-} from '@nebular/auth';
+/*
+ Routing module
+ */
+
+import {ExtraOptions, RouterModule, Routes} from "@angular/router";
+import {NgModule} from "@angular/core";
+import {DaAuthComponent} from "./@theme/components/auth/components/auth.component";
+import {DaLoginComponent} from "./@theme/components/auth/components/login/login.component";
+import {DaRegisterComponent} from "./@theme/components/auth/components/register/register.component";
+import {DaLogoutComponent} from "./@theme/components/auth/components/logout/logout.component";
+import {DaRequestPasswordComponent} from "./@theme/components/auth/components/request-password/request-password.component";
+import {DaResetPasswordComponent} from "./@theme/components/auth/components/reset-password/reset-password.component";
 
 const routes: Routes = [
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
   {
     path: 'auth',
-    component: NbAuthComponent,
+    component: DaAuthComponent,
     children: [
       {
         path: '',
-        component: NbLoginComponent,
+        component: DaLoginComponent,
       },
       {
         path: 'login',
-        component: NbLoginComponent,
+        component: DaLoginComponent,
       },
       {
         path: 'register',
-        component: NbRegisterComponent,
+        component: DaRegisterComponent,
       },
       {
         path: 'logout',
-        component: NbLogoutComponent,
+        component: DaLogoutComponent,
       },
       {
         path: 'request-password',
-        component: NbRequestPasswordComponent,
+        component: DaRequestPasswordComponent,
       },
       {
         path: 'reset-password',
-        component: NbResetPasswordComponent,
+        component: DaResetPasswordComponent,
       },
     ],
   },
