@@ -1,6 +1,8 @@
 import {Component, OnDestroy} from '@angular/core';
 import {NbThemeService} from '@nebular/theme';
 import {takeWhile} from 'rxjs/operators/takeWhile';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { UserService } from "../../services/user.service";
 
 interface CardSettings {
   title: string;
@@ -15,6 +17,9 @@ interface CardSettings {
 export class DashboardComponent implements OnDestroy {
 
   private alive = true;
+  file_data: any = {};
+  parsed_data: any = {};
+  api_data: any = {};
 
   lightCard: CardSettings = {
     title: 'Light',
@@ -73,15 +78,40 @@ export class DashboardComponent implements OnDestroy {
     ],
   };
 
-  constructor(private themeService: NbThemeService) {
+  constructor(
+    private themeService: NbThemeService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private userService: UserService,
+  ) {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
         this.statusCards = this.statusCardsByThemes[theme.name];
+      });
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe((queryParams: Params) => {
+      this.file_data = queryParams['data'];
+      this.parsed_data = JSON.parse(queryParams['data'])
+    });
+    this.userService.getUser(this.parsed_data.username).subscribe((data: any) => {
+      this.api_data = data;
     });
   }
 
   ngOnDestroy() {
     this.alive = false;
+  }
+
+  goToIndex() {
+    this.router.navigate(['/pages/index']);
+  }
+
+  postData() {
+    this.userService.updateUser(this.parsed_data).subscribe((data: any) => {
+      this.api_data = data;
+    });
   }
 }

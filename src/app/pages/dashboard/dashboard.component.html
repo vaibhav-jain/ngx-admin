@@ -7,10 +7,10 @@
           <textarea rows="10" placeholder="Text Area" class="form-control"></textarea>
         </div><br>
         <div class="input-group">
-          <textarea rows="10" placeholder="Text Area" class="form-control"></textarea>
+          <textarea rows="10" placeholder="Text Area" [ngModel]="file_data" class="form-control"></textarea>
         </div><br>
-        <button type="button" class="btn btn-success">Import</button>
-        <button type="button" class="btn btn-warning">Exit</button>
+        <button type="button" class="btn btn-success" (click)="postData()">Import</button>
+        <button type="button" class="btn btn-warning" (click)="goToIndex()">Exit</button>
       </nb-card-body>
     </nb-card>
   </div>
