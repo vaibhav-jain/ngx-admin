@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { IndexComponent } from "./index/index.component";
 
 const routes: Routes = [{
   path: '',
@@ -13,8 +14,12 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
+      path: 'index',
+      component: IndexComponent,
+    },
+    {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'index',
       pathMatch: 'full',
     },
   ],
